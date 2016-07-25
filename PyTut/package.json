@@ -1,0 +1,15 @@
+{
+  "name": "py-tut",
+  "version": "0.0.0",
+  "description": "PyTut",
+  "main": "server.js",
+  "author": {
+    "name": "rossd",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "python-shell": "^0.4.0"
+  }
+}
