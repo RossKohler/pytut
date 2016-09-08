@@ -16,8 +16,10 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
 						<input  name="password" type="password" class="form-control input-underline input-lg" ng-model="password" id="" placeholder="Password">
 					</div>
 				</div>
-				<label>{{data.message}}<label>
-				<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Login</button>
+			
+				<button ng-hide="isLoading" type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Login</button>
+				<label style="color:red">{{data.message}}<label>
+				<i ng-show="isLoading" class="fa fa-cog fa-spin" style="font-size:70px; color:white"></i>
 			</form>
 
 		</div>	

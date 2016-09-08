@@ -9,21 +9,33 @@
  */
 angular.module('yapp')
   .controller('LoginCtrl', function($scope, $location,User) {
-      $scope.data = "";
-
+      $scope.data = {code:"",message:""};
+      $scope.isLoading = false;
 
 
     $scope.submit = function(email, password) {
       $scope.isLoading = true;
       User.login(email,password).then(function(data){
-        $scope.isLoading = false;
+        
               if (data.code) {
-                  $scope.data.code = data.code;
-                  $scope.data.message = data.message;
+                $scope.$apply(function(){
+                  $scope.isLoading = false;
+                  $scope.data = {code: data.code, message: data.message}      
+                })
+                  //$scope.data.code = data.code;
+                  //$scope.data.message = data.message;
+
+                  console.log(data.code);
+                  console.log(data.message);
+
+
               }
               else {
                 console.log("DIRECTING TO DASHBOARD");
+                $scope.$apply(function(){
                    $location.path('/dashboard');
+                })
+                  
               }
     });
 
