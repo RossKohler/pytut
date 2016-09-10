@@ -42,10 +42,36 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/overview.html'
           })
-          .state('reports', {
-            url: '/reports',
+          .state('introduction', {
+            url: '/introduction',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/reports.html'
-          });
+            templateUrl: 'views/dashboard/introduction.html'
+          })
+            .state('selectionSort', {
+            url: '/selectionSort',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/selectionSort.html'
+          })
+            .state('mergeSort', {
+            url: '/mergeSort',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/mergeSort.html'
+          })
+            .state('linearSearch', {
+            url: '/linearSearch',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/linearSearch.html'
+          })
+            .state('binarySearch', {
+            url: '/binarySearch',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/binarySearch.html'
+          })
+          .state('contactus', {
+            url: '/contactus',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/contactus.html'
+          })
+
 
   });
