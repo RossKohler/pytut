@@ -12,7 +12,8 @@ angular
   .module('yapp', [
     'ui.router',
     'ngAnimate',
-    'starter.services'
+    'starter.services',
+    'ui.codemirror'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 

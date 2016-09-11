@@ -1,8 +1,12 @@
 'use strict';
 
 angular.module('yapp')
-  .controller('pythonInterpreterCtrl', function($location,User,$scope, $state) {
+  .controller('pythonInterpreterCtrl', function($window,$location,User,$scope, $state) {
+
     $scope.$state = $state;
+    var Sk = $window.Sk;
+    console.log(Sk);
+
 
     $scope.editor =  "def insertionSort(alist):\n\
             \tfor index in range(1,len(alist)):\n\
@@ -17,12 +21,13 @@ angular.module('yapp')
             print(alist)"
 
 
-      $scope.outf =function(text) {
+
+      function outf(text) {
           var mypre = document.getElementById("output");
           mypre.innerHTML = mypre.innerHTML + text;
       }
 
-      $scope.builtinRead = function (x) {
+     function builtinRead(x) {
           if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
               throw "File not found: '" + x + "'";
           return Sk.builtinFiles["files"][x];
