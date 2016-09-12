@@ -13,7 +13,8 @@ angular
     'ui.router',
     'ngAnimate',
     'starter.services',
-    'ui.codemirror'
+    'angulartics',
+    'angulartics.google.analytics'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
