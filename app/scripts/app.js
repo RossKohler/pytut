@@ -13,7 +13,7 @@ angular
     'ui.router',
     'ngAnimate',
     'starter.services',
-    'ui.codemirror'
+    'ui.ace'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 

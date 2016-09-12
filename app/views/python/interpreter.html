@@ -1,26 +1,22 @@
 
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/textmate");
-    editor.session.setMode("ace/mode/python");
-
-    $(document).ready(function () {
-        $('.ace_gutter').click(function () {
-            console.log($('.ace_gutter-active-line').css("top"));
-        });
-
-    });
-</script>
-
-<div> 
+<div>
     <h3 class="util">Code Window</h3>
-    <div ui-codemirror ng-model="editor"></div>
-
     <button type="button" ng-click="runit()">Run</button> <!--run interactive code-->
     <button type="button" ng-click="debugit()">Debug</button> <!--debug program-->
     <button type="button" ng-click="stepIn()">Step in</button> <!--step using debugger-->
     <button type="button" ng-click="chat()">Help</button> <!--initiate inetractive chat-->
     <button type="button" ng-click="mark()">Submit</button> <!--submit for automatic marking-->
+
+    <div ui-ace="{
+      useWrapMode : true,
+      showGutter: true,
+      theme:'textmate',
+      mode: 'python',
+      firstLineNumber: 1,
+      onLoad: aceLoaded,
+      onChange: aceChanged
+    }"></div>
+
     <pre id="output"></pre>
 </div>
 
@@ -29,7 +25,7 @@
         overflow: scroll;
     }
 
-    #editor {
+    .ace_editor {
         margin: 0;
         position: relative;
         width: 500px;

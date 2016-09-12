@@ -5,22 +5,20 @@ angular.module('yapp')
 
     $scope.$state = $state;
     var Sk = $window.Sk;
-    console.log(Sk);
 
+    var aceHl;
 
-    $scope.editor =  "def insertionSort(alist):\n\
-            \tfor index in range(1,len(alist)):\n\
-              \t\tcurrentvalue = alist[index]\n\
-               \t\tposition = index\n\
-                \t\twhile position>0 and alist[position-1]>currentvalue:\n\
-                   \t\t\talist[position]=alist[position-1]\n\
-                    \t\t\tposition = position-1\n\
-               \t\t alist[position]=currentvalue\n\
-            alist = [54,26,93,17,77,31,44,55,20]\n\
-            insertionSort(alist)\n\
-            print(alist)"
+    $scope.aceLoaded = function(_editor) {
+   // Options
+       _editor.setReadOnly(false);
+       _editor.setValue("print 10", 1);// change to different value acc exercise
+       aceHl = _editor;
+       console.log(aceHl);
+     };
 
+     $scope.aceChanged = function(e) {
 
+     };
 
       function outf(text) {
           var mypre = document.getElementById("output");
@@ -41,7 +39,7 @@ angular.module('yapp')
       $scope.runit = function() {
           // analytics: record user ID, timestamp, execution, successful/unsuccessful run
           // if unsuccessful record what kind of error was returned
-          var prog = $scope.editor
+          var prog = aceHl.getValue();
           var mypre = document.getElementById("output");
 
           mypre.innerHTML = '';
@@ -56,6 +54,8 @@ angular.module('yapp')
           },
               function (err) {
                   console.log(err.toString());
+                  var mypre = document.getElementById("output");
+                  mypre.innerHTML = mypre.innerHTML + err;
               });
           console.log('+1 to number of runs for analytics');
       }
