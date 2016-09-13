@@ -11,7 +11,17 @@ angular.module('yapp')
     $scope.aceLoaded = function(_editor) {
    // Options
        _editor.setReadOnly(false);
-       _editor.setValue("print 10", 1);// change to different value acc exercise
+       _editor.setValue("def insertionSort(alist):\n\
+    for index in range(1,len(alist)):\n\
+        currentvalue = alist[index]\n\
+        position = index\n\
+        while position>0 and alist[position-1]>currentvalue:\n\
+            alist[position]=alist[position-1]\n\
+            position = position-1\n\
+        alist[position]=currentvalue\n\
+alist = [54,26,93,17,77,31,44,55,20]\n\
+insertionSort(alist)\n\
+print(alist)", 1);// change to different value acc exercise
        aceHl = _editor;
        console.log(aceHl);
      };
