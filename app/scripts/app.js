@@ -13,7 +13,7 @@ angular
     'ui.router',
     'ngAnimate',
     'starter.services',
-    'ui.ace'
+    'ui.ace',
     'angulartics',
     'angulartics.google.analytics'
   ])
