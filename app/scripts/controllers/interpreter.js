@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('yapp')
-    .controller('pythonInterpreterCtrl', function (Database, $window, $location, User, $scope, $state) {
+    .controller('pythonInterpreterCtrl', function (Database, $window, $location, User, $scope, $state, $sce) {
 
     $scope.$state = $state;
     var Sk = $window.Sk;
 
     var aceHl;
 
-  
+
+
+    $scope.frameURL = ("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
 
     $scope.aceLoaded = function(_editor) {
    // Options
@@ -33,10 +35,16 @@ angular.module('yapp')
       }
 
       $scope.debugit = function() {
-        //var iframe = document.createElement('iframe');
-        //iframe.src = "http://pythontutor.com/iframe-embed.html#code="+encodeURIComponent(aceHl.getValue())+"cumulative=false&py=3&curInstr=0";
-        //document.body.appendChild(iframe);
-        console.log("Debug program");
+        console.log("Debug Program");
+        var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent("x = 6").split('%20').join('+') +"&cumulative=false&py=3&curInstr=0";
+        //document.getElementById('debugger').src = url;
+
+
+        var iframe = document.createElement('iframe');
+        iframe.src = "http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0";
+        document.body.appendChild(iframe);
+        console.log('iframe.contentWindow =', iframe.contentWindow);
+
       }
 
       $scope.runit = function() {
@@ -77,36 +85,5 @@ angular.module('yapp')
           console.log("Submit for automatic marking");
           // analytics: record user ID, timestamp, marking was inititated, success/failure?
       }
-
-        function outf(text) {
-            var mypre = document.getElementById("output");
-            mypre.innerHTML = mypre.innerHTML + text;
-        }
-
-        function builtinRead(x) {
-            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-                throw "File not found: '" + x + "'";
-            return Sk.builtinFiles["files"][x];
-        }
-
-        $scope.debugit = function () {
-            console.log("Debug program");
-            // analytics: record user ID, timestamp, debugging was initiated
-        }
-
-        $scope.stepIn = function () {
-            // analytics: record user ID, timestamp, stepping was used
-            console.log("Step into program");
-        }
-
-        $scope.chat = function () {
-            // analytics: record user ID, timestamp, chat was initiated
-            console.log("Initiate Chat");
-        }
-
-        $scope.mark = function () {
-            console.log("Submit for automatic marking");
-            // analytics: record user ID, timestamp, marking was inititated, success/failure?
-        }
 
     });
