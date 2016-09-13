@@ -8,6 +8,8 @@ angular.module('yapp')
 
     var aceHl;
 
+  
+
     $scope.aceLoaded = function(_editor) {
    // Options
        _editor.setReadOnly(false);
@@ -31,16 +33,16 @@ angular.module('yapp')
       }
 
       $scope.debugit = function() {
-          console.log("Debug program");
-          // analytics: record user ID, timestamp, debugging was initiated
+        //var iframe = document.createElement('iframe');
+        //iframe.src = "http://pythontutor.com/iframe-embed.html#code="+encodeURIComponent(aceHl.getValue())+"cumulative=false&py=3&curInstr=0";
+        //document.body.appendChild(iframe);
+        console.log("Debug program");
       }
 
       $scope.runit = function() {
           // analytics: record user ID, timestamp, execution, successful/unsuccessful run
           // if unsuccessful record what kind of error was returned
           var prog = aceHl.getValue();
-          console.log("Value of ace is "+aceHl.getValue());
-          console.log(prog);
           var mypre = document.getElementById("output");
 
           mypre.innerHTML = '';
