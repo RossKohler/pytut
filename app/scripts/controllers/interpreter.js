@@ -17,7 +17,7 @@ angular.module('yapp')
        _editor.setReadOnly(false);
        _editor.setValue("print 10", 1);// change to different value acc exercise
        aceHl = _editor;
-
+       $scope.detailFrame = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
      };
 
      $scope.aceChanged = function(e) {
@@ -36,14 +36,14 @@ angular.module('yapp')
 
       $scope.debugit = function() {
         console.log("Debug Program");
-        var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent("x = 6").split('%20').join('+') +"&cumulative=false&py=3&curInstr=0";
-        //document.getElementById('debugger').src = url;
+        var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue()).split('%20').join('+') +"&cumulative=false&py=3&curInstr=0";
+        console.log(url);
+        $scope.detailFrame = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
 
-
-        var iframe = document.createElement('iframe');
-        iframe.src = "http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0";
-        document.body.appendChild(iframe);
-        console.log('iframe.contentWindow =', iframe.contentWindow);
+        //var iframe = document.createElement('iframe');
+        //iframe.src = "http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0";
+        //document.body.appendChild(iframe);
+        //console.log('iframe.contentWindow =', iframe.contentWindow);
 
       }
 
