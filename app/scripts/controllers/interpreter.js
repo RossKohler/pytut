@@ -19,8 +19,9 @@ angular.module('yapp')
      };
 
      $scope.aceChanged = function(e) {
-       var placeHere = document.getElementById("frameHere");
-       placeHere.innerHTML="";
+       clearAll();
+       //var placeHere = document.getElementById("frameHere");
+       //placeHere.innerHTML="";
      };
       function outf(text) {
           var mypre = document.getElementById("output");
@@ -34,25 +35,21 @@ angular.module('yapp')
       }
 
       $scope.debugit = function() {
-        console.log(aceHl.getSession());
+        clearAll();
         var placeHere = document.getElementById("frameHere");
-
-        console.log("trying to add iframe");
         var iframe = document.createElement('iframe');
         iframe.style.display = "inline";
         iframe.id ="debugger";
-        iframe.width="500px";
+        iframe.width="800px";
         iframe.height="300px";
         var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue())+ "&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%5D&textReferences=false";
         iframe.src = url;
-        console.log(url);
         placeHere.appendChild(iframe);
 
       }
 
       $scope.runit = function() {
-          // analytics: record user ID, timestamp, execution, successful/unsuccessful run
-          // if unsuccessful record what kind of error was returned
+          clearAll();
           var prog = aceHl.getValue();
           var mypre = document.getElementById("output");
 
@@ -73,20 +70,17 @@ angular.module('yapp')
           console.log('+1 to number of runs for analytics');
       }
 
-      $scope.stepIn = function()
-      {
-          // analytics: record user ID, timestamp, stepping was used
-          console.log("Step into program");
-      }
-
-      $scope.chat = function() {
-          // analytics: record user ID, timestamp, chat was initiated
-          console.log("Initiate Chat");
-      }
-
       $scope.mark = function() {
           console.log("Submit for automatic marking");
           // analytics: record user ID, timestamp, marking was inititated, success/failure?
+      }
+
+      function clearAll()
+      {
+        var placeHere = document.getElementById("frameHere");
+        placeHere.innerHTML=""; // clear previous debugging console
+        var mypre = document.getElementById("output");
+        mypre.innerHTML = "";
       }
 
 

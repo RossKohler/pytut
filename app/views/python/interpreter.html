@@ -4,8 +4,6 @@
 
     <button type="button" ng-click="runit()">Run</button> <!--run interactive code-->
     <button type="button" ng-click="debugit()">Debug</button> <!--debug program-->
-    <button type="button" ng-click="stepIn()">Step in</button> <!--step using debugger-->
-    <button type="button" ng-click="chat()">Help</button> <!--initiate inetractive chat-->
     <button type="button" ng-click="mark()">Submit</button> <!--submit for automatic marking-->
 
     <div ui-ace="{
@@ -18,7 +16,7 @@
       onChange: aceChanged
     }">
 </div>
-<pre id="output" width ="400px"></pre>
+<pre id="output" width ="400"></pre>
 
 </div> <div id= "frameHere"></div>
 
@@ -31,9 +29,13 @@
         margin: 0;
         position: relative;
         width: 500px;
-        height: 400px;
+        height: 300px;
         border-style: solid;
         border-color: #000000;
+    }
+    .frameHere{
+      width: 800px;
+      height: 300px;
     }
 
     }
