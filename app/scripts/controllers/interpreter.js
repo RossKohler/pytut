@@ -34,7 +34,7 @@ angular.module('yapp')
       }
 
       $scope.debugit = function() {
-
+        console.log(aceHl.getSession());
         var placeHere = document.getElementById("frameHere");
 
         console.log("trying to add iframe");
@@ -43,8 +43,9 @@ angular.module('yapp')
         iframe.id ="debugger";
         iframe.width="500px";
         iframe.height="300px";
-        iframe.src = "http://pythontutor.com/iframe-embed.html#code=" + "%23%20this%20is%20the%20secondTest"+ "&cumulative=false&py=3&curInstr=0";
-
+        var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue())+ "&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%5D&textReferences=false";
+        iframe.src = url;
+        console.log(url);
         placeHere.appendChild(iframe);
 
       }
