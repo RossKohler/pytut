@@ -1,25 +1,35 @@
-<h3 class="util">Code Window</h3>
-<button type="button" ng-click="runit()">Run</button> <!--run interactive code-->
-<button type="button" ng-click="debugit()">Debug</button> <!--debug program-->
-<button type="button" ng-click="mark()">Submit</button> <!--submit for automatic marking-->
 
-<div>
-  <div ui-ace="{
-      useWrapMode : true,
-      showGutter: true,
-      theme:'textmate',
-      mode: 'python',
-      firstLineNumber: 1,
-      onLoad: aceLoaded,
-      onChange: aceChanged
-    }">
+<div class="row">
+    <div class="col-sm-6" >
+      <h3 class="util">Code Window</h3>
+      <div ui-ace="{
+          useWrapMode : true,
+          showGutter: true,
+          theme:'textmate',
+          mode: 'python',
+          firstLineNumber: 1,
+          onLoad: aceLoaded,
+          onChange: aceChanged
+        }">
+    </div>
+    
+    <button type="button" ng-click="runit()">Run Code</button> <!--run interactive code-->
+    <button type="button" ng-click="debugit()">Debug Code</button> <!--debug program-->
+    <button type="button" ng-click="mark()">Submit for Grading</button> <!--submit for automatic marking-->
+    </div>
+
+    <div class="col-sm-0.5" ></div>
+
+    <div class="col-sm-3" >
+      <h3>Code Output</h3>
+      <pre id="output"></pre>
+    </div>
+
 </div>
-
-<pre id="output"></pre>
-
-</div>
-
+<br>
+<h3 id="debHd" visibility="hidden">Debugger</h3>
 <div id= "frameHere"></div>
+
 
 <style type="text/css" media="screen">
     body {
@@ -27,28 +37,17 @@
     }
 
     #output{
-        margin: 0;
-        position: relative;
-        width: 200px;
-        height: 300px;
-        border-style: solid;
+        border-style: groove;
         border-color: #000000;
-        float: left;
+        height: 300px;
     }
 
     .ace_editor {
-        margin: 0;
-        position: relative;
-        width: 500px;
         height: 300px;
         border-style: solid;
         border-color: #000000;
-        float: left;
     }
 
-    #frameHere{
-      width: 800px;
-      height: 300px;
-    }
+
 
 </style>

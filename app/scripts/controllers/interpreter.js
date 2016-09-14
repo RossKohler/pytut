@@ -36,6 +36,7 @@ angular.module('yapp')
 
       $scope.debugit = function() {
         clearAll();
+        document.getElementById("debHd").style.visibility="visible";
         var placeHere = document.getElementById("frameHere");
         var iframe = document.createElement('iframe');
         iframe.style.display = "inline";
@@ -79,6 +80,7 @@ angular.module('yapp')
       {
         var placeHere = document.getElementById("frameHere");
         placeHere.innerHTML=""; // clear previous debugging console
+        document.getElementById("debHd").style.visibility="hidden";
         var mypre = document.getElementById("output");
         mypre.innerHTML = "";
       }
