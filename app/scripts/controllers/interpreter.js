@@ -8,9 +8,7 @@ angular.module('yapp')
 
     var aceHl;
 
-
-
-    $scope.frameURL = ("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
+    $scope.frameURL = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=%23%20this%20is%20the%20debugger&cumulative=false&py=3&curInstr=0");
 
     $scope.aceLoaded = function(_editor) {
    // Options
@@ -21,9 +19,8 @@ angular.module('yapp')
      };
 
      $scope.aceChanged = function(e) {
-       document.getElementById('debugger').style.visibility ="hidden";
-       document.getElementById('debugger').style.display ="none";
-
+       var placeHere = document.getElementById("frameHere");
+       placeHere.innerHTML="";
      };
       function outf(text) {
           var mypre = document.getElementById("output");
@@ -37,15 +34,19 @@ angular.module('yapp')
       }
 
       $scope.debugit = function() {
-        document.getElementById('debugger').style.visibility ="visible";
-        document.getElementById('debugger').style.display ="inline";
-        console.log("Debug Program");
-        var url = "http://pythontutor.com/iframe-embed.html#code=" + "code=for%20i%20in%20range%20(0,10%29%3A%0A%20%20%20%20print%20i"+"&cumulative=false&py=3&curInstr=0";
-        console.log(url);
-        $scope.detailFrame = $sce.trustAsResourceUrl(url);
 
-        //code=for%20i%20in%20range%20(0,10%29%3A%0A%20%20%20%20print%20i&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0
-        //#code=for%20i%20in%20range(0%2C10)%3A%0A%20%20%20%20print%20i&cumulative=false&py=3&curInstr=0
+        var placeHere = document.getElementById("frameHere");
+
+        console.log("trying to add iframe");
+        var iframe = document.createElement('iframe');
+        iframe.style.display = "inline";
+        iframe.id ="debugger";
+        iframe.width="500px";
+        iframe.height="300px";
+        iframe.src = "http://pythontutor.com/iframe-embed.html#code=" + "%23%20this%20is%20the%20secondTest"+ "&cumulative=false&py=3&curInstr=0";
+
+        placeHere.appendChild(iframe);
+
       }
 
       $scope.runit = function() {
@@ -86,5 +87,7 @@ angular.module('yapp')
           console.log("Submit for automatic marking");
           // analytics: record user ID, timestamp, marking was inititated, success/failure?
       }
+
+
 
     });
