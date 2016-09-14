@@ -1,12 +1,10 @@
+<h3 class="util">Code Window</h3>
+<button type="button" ng-click="runit()">Run</button> <!--run interactive code-->
+<button type="button" ng-click="debugit()">Debug</button> <!--debug program-->
+<button type="button" ng-click="mark()">Submit</button> <!--submit for automatic marking-->
 
 <div>
-    <h3 class="util">Code Window</h3>
-
-    <button type="button" ng-click="runit()">Run</button> <!--run interactive code-->
-    <button type="button" ng-click="debugit()">Debug</button> <!--debug program-->
-    <button type="button" ng-click="mark()">Submit</button> <!--submit for automatic marking-->
-
-    <div ui-ace="{
+  <div ui-ace="{
       useWrapMode : true,
       showGutter: true,
       theme:'textmate',
@@ -16,9 +14,11 @@
       onChange: aceChanged
     }">
 </div>
-<pre id="output" width ="400"></pre>
+<pre id="output"></pre>
 
-</div> <div id= "frameHere"></div>
+</div>
+
+<div id= "frameHere"></div>
 
 <style type="text/css" media="screen">
     body {
@@ -32,9 +32,15 @@
         height: 300px;
         border-style: solid;
         border-color: #000000;
+        float: left;
     }
     .frameHere{
       width: 800px;
+      height: 300px;
+    }
+
+    .output{
+      width: 100px;
       height: 300px;
     }
 
