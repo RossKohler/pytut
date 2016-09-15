@@ -8,17 +8,8 @@
         <img src="images/flat-avatar.png" class="user-avatar" /><br />
         <a ui-sref="login" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>
       </div>
-
-
       <ul class="nav nav-sidebar">
-        <li ng-class="{active: $state.includes('overview')}"><a ui-sref="overview">Searching and Sorting<span class="sr-only">(current)</span></a></li>
-        <ul>
-          <li ng-class="{active: $state.includes('introduction')}"><a style="color:white" ui-sref="introduction">Introduction</a></li>
-          <li ng-class="{active: $state.includes('selectionSort')}"><a style="color:white" ui-sref="selectionSort">Selection Sort</a></li>
-          <li ng-class="{active: $state.includes('mergeSort')}"><a style="color:white" ui-sref="mergeSort">Merge Sort</a></li>
-          <li ng-class="{active: $state.includes('linearSearch')}"><a style="color:white" ui-sref="linearSearch">Linear Search</a></li>
-          <li ng-class="{active: $state.includes('binarySearch')}"><a style="color:white" ui-sref="binarySearch">Binary Search</a></li>
-        </ul>
+        <li ng-class="{active: $state.includes('excercises')}"><a ui-sref="excercises">Excercises<span class="sr-only">(current)</span></a></li>
         <li ng-class="{active: $state.includes('ContactUs')}"><a ui-sref="contactUs">contact Us</a></li>
       </ul>
 

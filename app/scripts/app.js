@@ -12,13 +12,11 @@ angular
   .module('yapp', [
     'ui.router',
     'ngAnimate',
-    'starter.services',
-    'angulartics',
-    'angulartics.google.analytics'
+    'starter.services'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when('/dashboard', '/dashboard/overview');
+    $urlRouterProvider.when('/dashboard', '/dashboard/excercises');
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -39,41 +37,12 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('overview', {
-            url: '/overview',
+          .state('excercises', {
+            url: '/excercises',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/overview.html'
+            templateUrl: 'views/dashboard/excercises.html'
           })
-          .state('introduction', {
-            url: '/introduction',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/introduction.html'
-          })
-            .state('selectionSort', {
-            url: '/selectionSort',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/selectionSort.html'
-          })
-            .state('mergeSort', {
-            url: '/mergeSort',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/mergeSort.html'
-          })
-            .state('linearSearch', {
-            url: '/linearSearch',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/linearSearch.html'
-          })
-            .state('binarySearch', {
-            url: '/binarySearch',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/binarySearch.html'
-          })
-          .state('contactus', {
-            url: '/contactus',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/contactus.html'
-          })
+
 
 
   });

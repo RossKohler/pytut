@@ -60,7 +60,6 @@ angular.module('yapp')
                 });
             console.log('+1 to number of runs for analytics');
         }
-
         $scope.stepIn = function () {
             // analytics: record user ID, timestamp, stepping was used
             console.log("Step into program");
