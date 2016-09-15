@@ -19,6 +19,9 @@ angular.module('starter.services', [])
 
     .factory('User', function (Database, $q, $rootScope) {
         var me;
+
+        
+
         return {
             me: function () {
                 return me;

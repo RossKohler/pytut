@@ -27,8 +27,6 @@ angular.module('yapp')
 
           console.log(data.code);
           console.log(data.message);
-
-
         }
         else {
           console.log("DIRECTING TO DASHBOARD");

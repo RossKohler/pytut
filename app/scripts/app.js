@@ -15,12 +15,12 @@ angular
     'starter.services',
     'ui.ace',
     'angulartics',
-    'angulartics.google.analytics'
+    'angulartics.google.analytics',
+    'ui.bootstrap'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.when('/dashboard', '/dashboard/tasks');
 
     $stateProvider
       .state('base', {
@@ -40,41 +40,38 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('overview', {
-            url: '/overview',
+          .state('tasks', {
+            url: '/tasks',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/overview.html'
+            templateUrl: 'views/dashboard/tasks.html',
+            controller: 'TasksCtrl'
           })
-          .state('introduction', {
-            url: '/introduction',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/introduction.html'
-          })
-            .state('selectionSort', {
-            url: '/selectionSort',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/selectionSort.html'
-          })
-            .state('mergeSort', {
-            url: '/mergeSort',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/mergeSort.html'
-          })
-            .state('linearSearch', {
-            url: '/linearSearch',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/linearSearch.html'
-          })
-            .state('binarySearch', {
-            url: '/binarySearch',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/binarySearch.html'
-          })
-          .state('contactus', {
+             .state('contactus', {
             url: '/contactus',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/contactus.html'
           })
-
-
-  });
+               .state('task1', {
+            url: '/task1',
+            parent: 'tasks',
+            templateUrl: 'views/tasks/task1.html',
+            controller: "Task1Ctrl"
+          })
+               .state('task2', {
+            url: '/task2',
+            parent: 'tasks',
+            templateUrl: 'views/tasks/task2.html',
+            controller: "Task1Ctrl"
+          })
+               .state('task3', {
+            url: '/task3',
+            parent: 'tasks',
+            templateUrl: 'views/tasks/task3.html',
+            controller: "Task1Ctrl"
+          })
+  }).
+run(function($location,User) { 
+  if(User.me()== null){
+    $location.path("login");
+  }
+});
