@@ -66,7 +66,7 @@ angular.module('yapp')
               mypre.innerHTML = "Cannot debug with syntax errors: \n" +mypre.innerHTML + err.toString();
             });
           console.log("debugging");
-      }
+      };
 
       $scope.runit = function() {
           clearAll();
@@ -88,12 +88,12 @@ angular.module('yapp')
                   mypre.innerHTML = mypre.innerHTML + err.toString();
               });
           console.log('+1 to number of runs for analytics');
-      }
+      };
 
       $scope.mark = function() {
           console.log("Submit for automatic marking");
           // analytics: record user ID, timestamp, marking was inititated, success/failure?
-      }
+      };
 
       function clearAll()
       {
