@@ -41,9 +41,9 @@ angular.module('yapp')
         var iframe = document.createElement('iframe');
         iframe.style.display = "inline";
         iframe.id ="debugger";
-        iframe.width="800px";
-        iframe.height="300px";
-        var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue())+ "&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%5D&textReferences=false";
+        iframe.width="90%";
+        iframe.height="600px";
+        var url = "http://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue())+ "&codeDivHeight=400&codeDivWidth=550&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%5D&textReferences=false";
         iframe.src = url;
         placeHere.appendChild(iframe);
 
