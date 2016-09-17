@@ -145,14 +145,20 @@ gulp.task('watch', ['connect'], function() {
   gulp.watch('app/styles/**/*.less', ['styles']);
   gulp.watch('bower.json', ['wiredep']);
 });
+gulp.task('copy-bower-components', function () {
+  gulp.src('./bower_components/**')
+    .pipe(gulp.dest('dist/bower_components'));
+});
 
-gulp.task('builddist', ['jshint', 'jscs', 'html', 'images', 'fonts', 'extras'],
+
+gulp.task('builddist', ['jshint', 'html', 'images', 'fonts', 'extras'],
   function() {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('build', ['clean'], function() {
   gulp.start('builddist');
+  gulp.start('copy-bower-components');
 });
 
 gulp.task('docs', [], function() {

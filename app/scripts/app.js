@@ -15,12 +15,11 @@ angular
     'starter.services',
     'ui.ace',
     'angulartics',
-    'angulartics.google.analytics'
+    'angulartics.google.analytics',
+    'ui.bootstrap'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.when('/dashboard', '/dashboard/excercises');
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.when('/dashboard', '/dashboard/tasks');
 
     $stateProvider
       .state('base', {
@@ -40,12 +39,38 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('excercises', {
-            url: '/excercises',
+          .state('tasks', {
+            url: '/tasks',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/excercises.html'
+            templateUrl: 'views/dashboard/tasks.html',
+            controller: 'TasksCtrl'
           })
-
-
-
-  });
+             .state('contactus', {
+            url: '/contactus',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/contactus.html'
+          })
+               .state('task1', {
+            url: '/task1',
+            parent: 'tasks',
+            templateUrl: 'views/tasks/task1.html',
+            controller: "Task1Ctrl"
+          })
+               .state('task2', {
+            url: '/task2',
+            parent: 'tasks',
+            templateUrl: 'views/tasks/task2.html',
+            controller: "Task1Ctrl"
+          })
+               .state('task3', {
+            url: '/task3',
+            parent: 'tasks',
+            templateUrl: 'views/tasks/task3.html',
+            controller: "Task1Ctrl"
+          })
+  }).
+run(function($location,User) { 
+  if(User.me()== null){
+    $location.path("login");
+  }
+});
