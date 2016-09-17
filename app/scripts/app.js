@@ -12,7 +12,10 @@ angular
   .module('yapp', [
     'ui.router',
     'ngAnimate',
-    'starter.services'
+    'starter.services',
+    'ui.ace',
+    'angulartics',
+    'angulartics.google.analytics'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
