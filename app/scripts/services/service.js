@@ -19,16 +19,34 @@ angular.module('starter.services', [])
 
     .factory('User', function (Database, $q, $rootScope) {
         var me;
-
+        var myProfile;
         
-
         return {
             me: function () {
                 return me;
             },
+            initMyProfile: function(cb){
+                Database.user_ref.child(me.uid).on("value",function(snapshot){
+                    if(snapshot.val() != null){
+                        
+                        myProfile = snapshot.val();
+
+                        cb();
+                    }
+                })
+            },
+            myProfile:function(){
+                return myProfile;
+            },
             clearMe: function () {
                 me = null;
             },
+            setRoom: function(roomId){
+                Database.user_ref.child(me.uid).update({
+                    roomId: roomId
+                })
+            },
+
             login: function (email, password) {
                 var firebaseAuth = firebase.auth();
                 if (me)
@@ -39,7 +57,7 @@ angular.module('starter.services', [])
                     .then(function (authData) {
                         //addUserToFirebaseUsers(authData);
                         me = authData;
-                        Database.user_ref.child(me.uid).set({
+                        Database.user_ref.child(me.uid).update({
                             last_seen: firebase.database.ServerValue.TIMESTAMP
                         })
                         ////console.log("setting me in cache: ",me);

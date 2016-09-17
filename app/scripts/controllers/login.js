@@ -30,9 +30,11 @@ angular.module('yapp')
         }
         else {
           console.log("DIRECTING TO DASHBOARD");
-          $scope.$apply(function () {
-            $location.path('/dashboard');
+          User.initMyProfile(function(){
+                    $scope.$apply(function () {
+                      $location.path('/dashboard');
           })
+        });
 
         }
       });
