@@ -53,20 +53,17 @@ angular
                .state('task1', {
             url: '/task1',
             parent: 'tasks',
-            templateUrl: 'views/tasks/task1.html',
-            controller: "Task1Ctrl"
+            templateUrl: 'views/tasks/task1.html'
           })
                .state('task2', {
             url: '/task2',
             parent: 'tasks',
-            templateUrl: 'views/tasks/task2.html',
-            controller: "Task1Ctrl"
+            templateUrl: 'views/tasks/task2.html'
           })
                .state('task3', {
             url: '/task3',
             parent: 'tasks',
-            templateUrl: 'views/tasks/task3.html',
-            controller: "Task1Ctrl"
+            templateUrl: 'views/tasks/task3.html'
           })
   }).
 run(function($location,User) { 

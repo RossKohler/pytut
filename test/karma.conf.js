@@ -23,6 +23,7 @@ module.exports = function(config) {
       '../bower_components/angulartics/src/angulartics.js',
       '../bower_components/angulartics-google-analytics/lib/angulartics-ga.js',
       '../bower_components/angular-ui-ace/ui-ace.js',
+      '../bower_components/firebase/firebase.js',
       // endbower
       '../app/scripts/**/*.js',
       //'../test/mock/**/*.js',
