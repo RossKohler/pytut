@@ -27,19 +27,15 @@ angular.module('yapp')
     var firechat = new Firechat(chatRef, {});     
     firechat.setUser(User.me().uid,username,function(){ 
       if (User.me().email != "rossdkohler@gmail.com" && User.me().email != "carlakirkcohen@gmail.com") {
-        console.log(User.myProfile());
         if (User.myProfile().roomId == null) {
-          console.log("CREATING ROOM");
           firechat.createRoom(roomName, "private", function (roomId) {
             firechat.getUsersByRoom(roomId, function (userList) {
               
               if (userList["PwBPcW13MJfdN9qqbOFvNyGR7yb2"] == null) {
                 firechat.inviteUser("PwBPcW13MJfdN9qqbOFvNyGR7yb2", roomId)
-                console.log("Carla Invited")
               }
               if (userList["xWriKiWWiIUehfZyt1ptQfuJ76A2"] == null) {
                 firechat.inviteUser("xWriKiWWiIUehfZyt1ptQfuJ76A2", roomId)
-                 console.log("Ross Invited")
               }
             });
             firechat.enterRoom(roomId);

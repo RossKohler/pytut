@@ -84,7 +84,7 @@ gulp.task('connect', ['styles'], function() {
     .use(serveStatic('app'))
     // paths to bower_components should be relative to the current file
     // e.g. in app/index.html you should use ../bower_components
-    .use('/bower_components', serveStatic('bower_components'))
+    .use('bower_components', serveStatic('bower_components'))
     .use(serveIndex('app'));
 
   require('http').createServer(app)
@@ -143,7 +143,7 @@ gulp.task('watch', ['connect'], function() {
   ]).on('change', $.livereload.changed);
 
   gulp.watch('app/styles/**/*.less', ['styles']);
-  gulp.watch('bower.json', ['wiredep']);
+  gulp.watch('app/bower.json', ['wiredep']);
 });
 gulp.task('copy-bower-components', function () {
   gulp.src('./bower_components/**')
