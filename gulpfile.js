@@ -6,8 +6,6 @@ var gulp = require('gulp');
 var karma = require('karma').server;
 var argv = require('yargs').argv;
 var $ = require('gulp-load-plugins')();
-var cssimport = require("gulp-cssimport");
-var options = {};
 
 
 gulp.task('styles', function() {

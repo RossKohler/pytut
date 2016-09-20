@@ -53,30 +53,17 @@ angular
                .state('task1', {
             url: '/task1',
             parent: 'tasks',
-<<<<<<< HEAD
-            templateUrl: 'views/tasks/task1.html',
-=======
             templateUrl: 'views/tasks/task1.html'
->>>>>>> 6e1a33a4cfaa443f67797e68fe6cc7896443fbfc
           })
                .state('task2', {
             url: '/task2',
             parent: 'tasks',
-<<<<<<< HEAD
-            templateUrl: 'views/tasks/task2.html',
-=======
             templateUrl: 'views/tasks/task2.html'
->>>>>>> 6e1a33a4cfaa443f67797e68fe6cc7896443fbfc
           })
                .state('task3', {
             url: '/task3',
             parent: 'tasks',
-<<<<<<< HEAD
-            templateUrl: 'views/tasks/task3.html',
-
-=======
             templateUrl: 'views/tasks/task3.html'
->>>>>>> 6e1a33a4cfaa443f67797e68fe6cc7896443fbfc
           })
   }).
 run(function($location,User) { 
