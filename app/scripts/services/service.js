@@ -13,7 +13,8 @@ angular.module('starter.services', [])
         return {
             db: db,
             user_ref: db.ref("/users"),
-            chat_ref: db.ref("/chat")
+            chat_ref: db.ref("/chat"),
+            assessment_ref: db.ref("/automated_assessment")
         };
     })
 
@@ -75,4 +76,14 @@ angular.module('starter.services', [])
             }
         }
 
-    })
+    }).factory('AutomatedAssessment',function(Database){
+        return{
+            getTests: function(questionNumber){
+            Database.automated_assessment.child(questionNumber).once("value",function(snapshot){
+                return snapshot.val();
+            });
+            }
+        }
+
+
+    });

@@ -90,11 +90,51 @@ angular.module('yapp')
           console.log('+1 to number of runs for analytics');
       };
 
-      $scope.mark = function() {
+      $scope.mark = function(question, functionName) {
           console.log("Submit for automatic marking");
+          var prog = aceHl.getValue();
+        try {
+            //var module = Sk.importMainWithBody("<stdin>", false, prog);
+            console.log(question);
+            Database.assessment_ref.child(question).once("value",function(snapshot){
+                var tests = snapshot.val();
+                if(question == "question 1"){
+                    var keys = Object.keys(tests);
+                    console.log(keys);
+                    for(var i=0; i< keys.length;i++){
+                        var test = tests[keys[i]];
+
+                        var input = test.input;
+                        var output = test.output;
+                        console.log(input);
+                        var progOutput= Sk.globals.test.func_code(Sk.builtin.list(input));
+
+                        console.log(progOutput)
+                    }
+
+                }
+                else if(question == "question 2"){
+
+
+                }
+                else if(question == "question 3"){
+
+
+
+                }
+               
+            });
+   
+
+
+
+            //console.log();
+
+        } catch (e) {
+            console.error(e)
+        }
           // analytics: record user ID, timestamp, marking was inititated, success/failure?
       };
-
       function clearAll()
       {
         var placeHere = document.getElementById("frameHere");
