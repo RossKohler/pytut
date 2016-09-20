@@ -10,8 +10,9 @@
         <a ui-sref="login" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>
       </div>
       <ul class="nav nav-sidebar">
-        <li ng-class="{active: $state.includes('tasks')}"><a ui-sref="tasks">Excercises<span class="sr-only">(current)</span></a></li>
-        <li ng-class="{active: $state.includes('contactus')}"><a ui-sref="contactus">contact us</a></li>
+        <li ng-class="{active: $state.includes('tasks')}"><a ui-sref="task1">Questions<span class="sr-only">(current)</span></a></li>
+        <li ng-class="{active: $state.includes('contactus')}"><a ui-sref="contactus">Contact Us</a></li>
+        <li ng-class="{active: $state.includes('survey')}"><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfAycSfZWU_2hOy8V-4MPg0wxjrAB6-Aq5yL8wtgNzGLlZcrQ/viewform?c=0&w=1" >Survey</a></li>
       </ul>
     </div>
     
@@ -21,4 +22,3 @@
 </div>
 </div>
 
-<div style="position: absolute; width:250px; bottom:0px; right:0px" id="firechat-wrapper"></div>

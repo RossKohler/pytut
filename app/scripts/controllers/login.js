@@ -8,7 +8,7 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('LoginCtrl', function ($scope, $location, User) {
+  .controller('LoginCtrl', function ($scope, $location, User,$analytics) {
     $scope.data = { code: "", message: "" };
     $scope.isLoading = false;
 
@@ -30,9 +30,10 @@ angular.module('yapp')
         }
         else {
           console.log("DIRECTING TO DASHBOARD");
+          $analytics.setUsername(User.me().uid);
           User.initMyProfile(function(){
                     $scope.$apply(function () {
-                      $location.path('/dashboard');
+                      $location.path('/dashboard/tasks/task1');
           })
         });
 
