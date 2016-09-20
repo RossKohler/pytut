@@ -1,4 +1,3 @@
-
 /* jshint node:true */
 'use strict';
 
@@ -6,9 +5,6 @@ var gulp = require('gulp');
 var karma = require('karma').server;
 var argv = require('yargs').argv;
 var $ = require('gulp-load-plugins')();
-var cssimport = require("gulp-cssimport");
-var options = {};
-
 
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.less')
@@ -24,12 +20,6 @@ gulp.task('jshint', function() {
     //.pipe($.jshint.reporter('jshint-stylish'))
     //.pipe($.jshint.reporter('fail'));
 });
-
-gulp.task("import", function() {
-    gulp.src("src/style.css")
-        .pipe(cssimport(options))
-        .pipe(gulp.dest("dist/"));
-}); 
 
 gulp.task('jscs', function() {
   return gulp.src('app/scripts/**/*.js')
@@ -156,7 +146,7 @@ gulp.task('watch', ['connect'], function() {
   gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('builddist', ['jshint', 'html', 'images', 'fonts', 'extras','import'],
+gulp.task('builddist', ['jshint', 'jscs', 'html', 'images', 'fonts', 'extras'],
   function() {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
