@@ -28,6 +28,9 @@ angular.module('yapp')
           var mypre = document.getElementById("output");
           mypre.innerHTML = mypre.innerHTML + text;
       }
+      function userInput(){
+
+      }
 
      function builtinRead(x) {
           if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
@@ -91,6 +94,9 @@ angular.module('yapp')
       };
 
       $scope.mark = function(question, functionName) {
+           var mypre = document.getElementById("output");
+           mypre.innerHTML = "";
+
           console.log("Submit for automatic marking");
           var prog = aceHl.getValue();
         try {
@@ -99,17 +105,28 @@ angular.module('yapp')
             Database.assessment_ref.child(question).once("value",function(snapshot){
                 var tests = snapshot.val();
                 if(question == "question 1"){
+                    mypre.innerHTML = "**MARKING QUESTION 1**\n"
                     var keys = Object.keys(tests);
                     console.log(keys);
                     for(var i=0; i< keys.length;i++){
+                        mypre.innerHTML = mypre.innerHTML+"Running test "+(i+1)+":\n";
                         var test = tests[keys[i]];
-
                         var input = test.input;
                         var output = test.output;
-                        console.log(input);
-                        var progOutput= Sk.globals.test.func_code(Sk.builtin.list(input));
 
-                        console.log(progOutput)
+                        mypre.innerHTML =  mypre.innerHTML+"input: "+input+"\n"
+                        mypre.innerHTML = mypre.innerHTML+"expected output:\n"
+                        mypre.innerHTML = mypre.innerHTML+output+"\n"
+                        
+
+
+                        
+                       // result = progOutput.v;
+
+                        /*if(result == output){
+                            console.log("CORRECT")
+                        }*/
+
                     }
 
                 }

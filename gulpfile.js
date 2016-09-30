@@ -1,4 +1,3 @@
-
 /* jshint node:true */
 'use strict';
 
@@ -6,7 +5,6 @@ var gulp = require('gulp');
 var karma = require('karma').server;
 var argv = require('yargs').argv;
 var $ = require('gulp-load-plugins')();
-
 
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.less')
@@ -22,12 +20,6 @@ gulp.task('jshint', function() {
     //.pipe($.jshint.reporter('jshint-stylish'))
     //.pipe($.jshint.reporter('fail'));
 });
-
-gulp.task("import", function() {
-    gulp.src("src/style.css")
-        .pipe(cssimport(options))
-        .pipe(gulp.dest("dist/"));
-}); 
 
 gulp.task('jscs', function() {
   return gulp.src('app/scripts/**/*.js')
@@ -92,7 +84,7 @@ gulp.task('connect', ['styles'], function() {
     .use(serveStatic('app'))
     // paths to bower_components should be relative to the current file
     // e.g. in app/index.html you should use ../bower_components
-    .use('bower_components', serveStatic('bower_components'))
+    .use('/bower_components', serveStatic('bower_components'))
     .use(serveIndex('app'));
 
   require('http').createServer(app)
@@ -151,10 +143,10 @@ gulp.task('watch', ['connect'], function() {
   ]).on('change', $.livereload.changed);
 
   gulp.watch('app/styles/**/*.less', ['styles']);
-  gulp.watch('app/bower.json', ['wiredep']);
+  gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('builddist', ['jshint', 'html', 'images', 'fonts', 'extras','import'],
+gulp.task('builddist', ['jshint', 'html', 'images', 'fonts', 'extras'],
   function() {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
