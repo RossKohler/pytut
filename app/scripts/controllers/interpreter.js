@@ -13,7 +13,7 @@ angular.module('yapp')
     $scope.aceLoaded = function(_editor) {
    // Options
        _editor.setReadOnly(false);
-       _editor.setValue("print 10", 1);// change to different value acc exercise
+       _editor.setValue("", 1);// change to different value acc exercise
        aceHl = _editor;
        //$scope.detailFrame = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
      };
@@ -139,9 +139,9 @@ angular.module('yapp')
 
 
                 }
-               
+
             });
-   
+
 
 
 
