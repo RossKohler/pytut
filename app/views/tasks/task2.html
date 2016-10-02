@@ -12,16 +12,18 @@ Note that output should take the form “can vote” or “cannot vote” and �
 
 Input format: [ age, registered, disability ]
 For Example
-[18, 0, 0] = 18 years old, not registered, not disabled 	-> cannot vote
+18 0 0 = 18 years old, not registered, not disabled 	-> cannot vote
 
-[75, 1, 0] = 75 years old, registered, not disabled 		-> can vote
-special election
+75 1 0 = 75 years old, registered, not disabled 		-> can vote 
+							           special election
 
-[60, 1, 1] = 65 years old, registered, has disability 		-> can vote
-special election
+60 1 1 = 65 years old, registered, has disability 		-> can vote
+								   special election
 
-[35, 1, 0] = 35 years old, registered, not disabled 		-> can vote
-regular election
+35 1 0 = 35 years old, registered, not disabled 		-> can vote
+							           regular election
+
+The program is expected to take using input using 'raw_input' and to 'print' the output. The input should be space seperated.
 
 	</div>
 </div>

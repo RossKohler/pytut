@@ -61,11 +61,13 @@ angular.module('starter.services', [])
                         Database.user_ref.child(me.uid).update({
                             last_seen: firebase.database.ServerValue.TIMESTAMP
                         })
+                        console.log("AUTH SUCCESS")
                         ////console.log("setting me in cache: ",me);
                         //LocalStorageService.setCacheValue("me",me);
                         // deff.resolve(authData);
                         return Promise.resolve(authData);
-                    }).catch(function (error) {
+                    }).then(function (error) {
+                        console.log("AUTH FAIL")
                         //this is where we will get incorrect login
                         console.error(error);
                         // deff.resolve(error);

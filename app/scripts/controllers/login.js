@@ -18,6 +18,7 @@ angular.module('yapp')
       User.login(email, password).then(function (data) {
 
         if (data.code) {
+          console.log("hello")
           $scope.$apply(function () {
             $scope.isLoading = false;
             $scope.data = { code: data.code, message: data.message }
