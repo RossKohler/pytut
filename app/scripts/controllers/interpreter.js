@@ -38,12 +38,18 @@ angular.module('yapp')
 
         $scope.debugit = function () {
             // must run program to check that there are no syntax errors before debugging
+            clearAll();
             var prog = aceHl.getValue();
             var mypre = document.getElementById("output");
 
             mypre.innerHTML = '';
             Sk.pre = "output";
-            Sk.configure({ output: outf, read: builtinRead });
+            Sk.configure({
+                output: outf, read: builtinRead, inputfun: function (str) {
+                    return window.prompt(str);
+                },
+                inputfunTakesPrompt: true
+            });
             (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
             var myPromise = Sk.misceval.asyncToPromise(function () {
                 return Sk.importMainWithBody("<stdin>", false, prog, true);
