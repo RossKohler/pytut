@@ -27,7 +27,7 @@ angular.module('yapp')
         };
 
         function outf(text) {
-            console.log("output run", text);
+            
             var mypre = document.getElementById("output");
             mypre.innerHTML = mypre.innerHTML + text;
         }
@@ -91,13 +91,13 @@ angular.module('yapp')
                 return Sk.importMainWithBody("<stdin>", false, prog, true);
             });
             myPromise.then(function (mod) {
-                console.log('success');
+
             },
                 function (err) {
                     var mypre = document.getElementById("output");
                     mypre.innerHTML = mypre.innerHTML + err.toString();
                 });
-            console.log('+1 to number of runs for analytics');
+
         };
 
         $scope.automaticMark = function (question) {

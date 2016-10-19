@@ -36,6 +36,12 @@ angular.module('starter.services', [])
             },
 
             updateSaved: function (code){
+              var updates ={};
+              
+              updates["/saved/exercise"+myProfile.current.exercise+"/question"+ myProfile.current.question+"/"] = code;
+              console.log(updates);
+
+              Database.user_ref.child(me.uid).update(updates);
 
             },
 
