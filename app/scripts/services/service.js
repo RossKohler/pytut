@@ -26,13 +26,26 @@ angular.module('starter.services', [])
             me: function () {
                 return me;
             },
+
+            savedEx: function () {
+              var ex = "exercise"+myProfile.current.exercise;
+              var q = "question" + myProfile.current.question;
+
+              return myProfile.saved[ex][q];
+
+            },
+
+            updateSaved: function (code){
+
+            },
+
             initMyProfile: function(cb){
 
                 Database.user_ref.child(me.uid).on("value",function(snapshot){
                     if(snapshot.val() != null){
                         myProfile = snapshot.val();
-                        console.log(myProfile);
-                        cb();
+
+                        cb("E" +myProfile.current.exercise +"T"+myProfile.current.question);
 
                     }
                 })
@@ -72,6 +85,7 @@ angular.module('starter.services', [])
 
 
             },
+
             myProfile:function(){
                 return myProfile;
             },
@@ -88,7 +102,7 @@ angular.module('starter.services', [])
                 if (me)
                     return Promise.resolve(me);
                 var deff = $q.defer();
-                console.log(me);
+
 
                 // isLoading = true;
                 return firebaseAuth.signInWithEmailAndPassword(email, password)

@@ -4,6 +4,8 @@ angular.module('yapp')
     .controller('pythonInterpreterCtrl', function ($analytics, Database, $window, $location, User, $scope, $state, $sce) {
         $scope.showScore = false;
         $scope.$state = $state;
+        console.log($state);
+
         var Sk = $window.Sk;
 
         var aceHl;
@@ -13,9 +15,9 @@ angular.module('yapp')
         $scope.aceLoaded = function (_editor) {
             // Options
             _editor.setReadOnly(false);
-            _editor.setValue("", 1);// change to different value acc exercise
+            _editor.setValue(User.savedEx(), 1);// set editor value to user's saved solution
             aceHl = _editor;
-            //$scope.detailFrame = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
+
         };
 
         $scope.aceChanged = function (e) {
@@ -73,6 +75,8 @@ angular.module('yapp')
             clearAll();
             var prog = aceHl.getValue();
             var mypre = document.getElementById("output");
+
+            User.updateSaved(prog);
 
             mypre.innerHTML = '';
             Sk.pre = "output";
@@ -254,4 +258,3 @@ function getDifference(a, b) {
     }
     return result;
 }
-
