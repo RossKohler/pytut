@@ -34,7 +34,8 @@ angular.module('yapp')
           $analytics.setUsername(User.me().uid);
           User.initMyProfile(function(){
                     $scope.$apply(function () {
-                      $location.path('/dashboard/tasks/task1');
+                      $location.path('/dashboard/tasks/task2');
+
           })
         });
 
