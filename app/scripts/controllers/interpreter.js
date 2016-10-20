@@ -3,8 +3,6 @@
 angular.module('yapp')
     .controller('pythonInterpreterCtrl', function ($analytics, Database, $window, $location, User, $scope, $state, $sce) {
         $scope.showScore = false;
-        $scope.$state = $state;
-        console.log($state);
 
         var Sk = $window.Sk;
 
@@ -15,7 +13,8 @@ angular.module('yapp')
         $scope.aceLoaded = function (_editor) {
             // Options
             _editor.setReadOnly(false);
-            _editor.setValue(User.savedEx(), 1);// set editor value to user's saved solution
+            console.log("Ace loaded");
+            _editor.setValue(User.savedEx($scope.exercise, $scope.question), 1);// set editor value to user's saved solution
             aceHl = _editor;
 
         };
@@ -27,7 +26,7 @@ angular.module('yapp')
         };
 
         function outf(text) {
-            
+
             var mypre = document.getElementById("output");
             mypre.innerHTML = mypre.innerHTML + text;
         }
@@ -76,7 +75,7 @@ angular.module('yapp')
             var prog = aceHl.getValue();
             var mypre = document.getElementById("output");
 
-            User.updateSaved(prog);
+            User.updateSaved(prog, $scope.exercise, $scope.question);
 
             mypre.innerHTML = '';
             Sk.pre = "output";

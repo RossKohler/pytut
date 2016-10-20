@@ -34,11 +34,7 @@ angular.module('yapp')
           $analytics.setUsername(User.me().uid);
           User.initMyProfile(function(currEx){
                     $scope.$apply(function () {
-                      console.log(currEx);
-                      //just for now while changing routing
-                      currEx="task1"
-                      $location.path('/dashboard/tasks/'+currEx);
-
+                      $location.path('/dashboard/tasks/'+User.currentEx());
           })
         });
 

@@ -27,22 +27,28 @@ angular.module('starter.services', [])
                 return me;
             },
 
-            savedEx: function () {
-              var ex = "exercise"+myProfile.current.exercise;
-              var q = "question" + myProfile.current.question;
+            savedEx: function (ex, q) {
+              return myProfile.saved["exercise"+ex]["question"+q];
+            },
 
-              return myProfile.saved[ex][q];
+            currentEx: function(){
+              return "exercise"+myProfile.current.exercise + "task" + myProfile.current.question;
+            },
+
+            updateSaved: function (code, ex, q){
+              var updates ={};
+              updates["/saved/exercise"+ex+"/question"+ q+"/"] = code;
+              Database.user_ref.child(me.uid).update(updates);
 
             },
 
-            updateSaved: function (code){
+            updateCurrent: function (ex,q){
+              console.log("Exercise "+ex);
+              console.log("Question "+q);
               var updates ={};
-              
-              updates["/saved/exercise"+myProfile.current.exercise+"/question"+ myProfile.current.question+"/"] = code;
-              console.log(updates);
-
+              updates["/current/exercise/"] = ex;
+              updates["/current/question/"] = q;
               Database.user_ref.child(me.uid).update(updates);
-
             },
 
             initMyProfile: function(cb){
@@ -86,10 +92,6 @@ angular.module('starter.services', [])
                   }
                 });
 
-
-
-
-
             },
 
             myProfile:function(){
@@ -125,9 +127,6 @@ angular.module('starter.services', [])
                         // deff.resolve(authData);
                         return Promise.resolve(authData);
                     }).then(function (error) {
-                        console.log("AUTH FAIL")
-                        //this is where we will get incorrect login
-                        console.error(error);
                         // deff.resolve(error);
                         return Promise.resolve(error);
                         // return error;

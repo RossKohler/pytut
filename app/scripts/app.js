@@ -50,26 +50,44 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/contactus.html'
           })
-               .state('task1', {
-            url: '/task1',
+               .state('exercise1task1', {
+            url: '/exercise1task1',
             parent: 'tasks',
-            templateUrl: 'views/tasks/task1.html',
+            templateUrl: 'views/tasks/exercise1task1.html',
             controller: 'TasksCtrl'
           })
-               .state('task2', {
-            url: '/task2',
+               .state('exercise1task2', {
+            url: '/exercise1task2',
             parent: 'tasks',
-            templateUrl: 'views/tasks/task2.html',
+            templateUrl: 'views/tasks/exercise1task2.html',
             controller: 'TasksCtrl'
           })
-               .state('task3', {
-            url: '/task3',
+               .state('exercise1task3', {
+            url: '/exercise1task3',
             parent: 'tasks',
-            templateUrl: 'views/tasks/task3.html',
+            templateUrl: 'views/tasks/exercise1task3.html',
             controller: 'TasksCtrl'
           })
+          .state('exercise2task1', {
+       url: '/exercise2task1',
+       parent: 'tasks',
+       templateUrl: 'views/tasks/exercise2task1.html',
+       controller: 'TasksCtrl'
+     })
+          .state('exercise2task2', {
+       url: '/exercise2task2',
+       parent: 'tasks',
+       templateUrl: 'views/tasks/exercise2task2.html',
+       controller: 'TasksCtrl'
+     })
+          .state('exercise2task3', {
+       url: '/exercise2task3',
+       parent: 'tasks',
+       templateUrl: 'views/tasks/exercise2task3.html',
+       controller: 'TasksCtrl'
+     })
   }).
-run(function($location,User) { 
+run(function($location,User) {
   if(User.me()== null){
     $location.path("login");
   }
