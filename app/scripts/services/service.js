@@ -43,7 +43,7 @@ angular.module('starter.services', [])
             },
 
             updateCurrent: function (ex,q){
-  
+
               var updates ={};
               updates["/current/exercise/"] = ex;
               updates["/current/question/"] = q;
@@ -65,8 +65,10 @@ angular.module('starter.services', [])
                 Database.user_ref.child(me.uid).once('value').then(function(snapshot) {
                   var saved = snapshot.val().saved;
                   // set up database to track work and progress
+                  
                   if(saved == undefined)
                   {
+
                     Database.user_ref.child(me.uid).update({
                       current: {
                         "exercise" : 1,

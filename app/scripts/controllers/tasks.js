@@ -49,10 +49,20 @@ angular.module('yapp')
         }
 
         $scope.clicked = function (q){
-          console.log($scope.exercise);
           User.updateCurrent($scope.exercise,q);
+          // if on exercise 1 task 3, must be able to go to exercise 2
         };
 
+        $scope.change = function(ex, qu)
+        {
+          $scope.exercise = ex;
+          $scope.question =qu;
+          User.updateCurrent($scope.exercise,$scope.question);
+
+          $scope.$apply(function(){
+            $location.path('/dashboard/tasks/'+User.currentEx());
+          })
+        };//end change
 
 
 })
