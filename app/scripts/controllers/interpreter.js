@@ -13,7 +13,7 @@ angular.module('yapp')
         $scope.aceLoaded = function (_editor) {
             // Options
             _editor.setReadOnly(false);
-            console.log("Ace loaded");
+            
             _editor.setValue(User.savedEx($scope.exercise, $scope.question), 1);// set editor value to user's saved solution
             aceHl = _editor;
 

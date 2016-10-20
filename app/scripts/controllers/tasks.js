@@ -1,5 +1,6 @@
 angular.module('yapp')
   .controller('TasksCtrl', function($scope, $state, User) {
+
         if($state.includes('exercise1task1')){
           $scope.question = "1";
           $scope.functionName = "wordRectangle"
@@ -31,8 +32,25 @@ angular.module('yapp')
           $scope.exercise = "2";
         }
 
-        $scope.clicked = function (ex, q){
-          User.updateCurrent(ex,q);
+        if($scope.exercise == "1"){
+          $scope.tabs = {
+            "1" : "exercise1task1",
+            "2" : "exercise1task2",
+            "3" : "exercise1task3"
+          }
+        }
+        else
+        {
+          $scope.tabs = {
+            "1" : "exercise2task1",
+            "2" : "exercise2task2",
+            "3" : "exercise2task3"
+          }
+        }
+
+        $scope.clicked = function (q){
+          console.log($scope.exercise);
+          User.updateCurrent($scope.exercise,q);
         };
 
 

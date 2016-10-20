@@ -1,11 +1,10 @@
 <nav class="navbar navbar-inverse" style="border-radius:0px">
   <div class="container-fluid">
-    <div tasks ng-controller = "TasksCtrl">
+    <div id = "taskBin" tasks ng-controller = "TasksCtrl">
+
     <ul class="nav navbar-nav">
 
-      <li ng-class="{active: $state.includes('exercise1task1')}" ng-click ="clicked(1,1)"><a  ui-sref="exercise1task1">Question 1<span class="sr-only">(current)</span></a></li>
-      <li ng-class="{active: $state.includes('exercise1task2')}" ng-click ="clicked(1,2)"><a  ui-sref="exercise1task2">Question 2</a></li>
-      <li ng-class="{active: $state.includes('exercise1task3')}" ng-click ="clicked(1,3)"><a ui-sref="exercise1task3">Question 3</a></li>
+      <li ng-repeat="(x,y) in tabs" ng-class="{active: $state.includes('{{y}}')}" ng-click ="clicked(x)"><a ui-sref="{{y}}">Question {{x}}</a></li>
     </ul>
   </div>
   </div>

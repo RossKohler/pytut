@@ -43,8 +43,7 @@ angular.module('starter.services', [])
             },
 
             updateCurrent: function (ex,q){
-              console.log("Exercise "+ex);
-              console.log("Question "+q);
+  
               var updates ={};
               updates["/current/exercise/"] = ex;
               updates["/current/question/"] = q;
