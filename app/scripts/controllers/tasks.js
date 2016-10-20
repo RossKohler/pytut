@@ -1,5 +1,5 @@
 angular.module('yapp')
-  .controller('TasksCtrl', function($scope, $state) {
+  .controller('TasksCtrl', function($scope, $state, User) {
         if($state.includes('exercise1task1')){
           $scope.question = "1";
           $scope.functionName = "wordRectangle"
@@ -30,6 +30,10 @@ angular.module('yapp')
           $scope.functionName = "e2t3"
           $scope.exercise = "2";
         }
+
+        $scope.clicked = function (ex, q){
+          User.updateCurrent(ex,q);
+        };
 
 
 
