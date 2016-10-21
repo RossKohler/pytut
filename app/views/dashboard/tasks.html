@@ -1,9 +1,9 @@
 <nav class="navbar navbar-inverse" style="border-radius:0px">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-
       <li ng-repeat="(x,y) in tabs" ng-class="{active: $state.includes('{{y}}')}" ng-click ="clicked(x)"><a ui-sref="{{y}}">Question {{x}}</a></li>
     </ul>
   </div>
 </nav>
+
 <div style="position:relative"ui-view></div>

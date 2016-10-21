@@ -46,9 +46,7 @@ angular.module('yapp')
           }
         };
 
-
         $scope.tabs = sel[$scope.exercise];
-        console.log($scope.tabs);
 
         $scope.clicked = function (q){
           User.updateCurrent($scope.exercise,q);
@@ -61,8 +59,8 @@ angular.module('yapp')
           $scope.question =qu;
 
           $scope.tabs = sel[$scope.exercise];
-          console.log($scope.tabs);
-          
+          //console.log($scope.tabs);
+
           User.updateCurrent($scope.exercise,$scope.question);
 
           $location.path('/dashboard/tasks/'+User.currentEx());
