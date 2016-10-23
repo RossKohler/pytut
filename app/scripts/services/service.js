@@ -28,16 +28,16 @@ angular.module('starter.services', [])
             },
 
             savedEx: function (ex, q) {
-              return myProfile.saved["exercise"+ex]["question"+q];
+              return myProfile.saved["excercise"+ex]["question"+q];
             },
 
             currentEx: function(){
-              return "exercise"+myProfile.current.exercise + "task" + myProfile.current.question;
+              return "excercise"+myProfile.current.excercise + "task" + myProfile.current.question;
             },
 
             updateSaved: function (code, ex, q){
               var updates ={};
-              updates["/saved/exercise"+ex+"/question"+ q+"/"] = code;
+              updates["/saved/excercise"+ex+"/question"+ q+"/"] = code;
               Database.user_ref.child(me.uid).update(updates);
 
             },
@@ -45,7 +45,7 @@ angular.module('starter.services', [])
             updateCurrent: function (ex,q){
 
               var updates ={};
-              updates["/current/exercise/"] = ex;
+              updates["/current/excercise/"] = ex;
               updates["/current/question/"] = q;
               Database.user_ref.child(me.uid).update(updates);
             },
@@ -56,7 +56,7 @@ angular.module('starter.services', [])
                     if(snapshot.val() != null){
                         myProfile = snapshot.val();
 
-                        cb("E" +myProfile.current.exercise +"T"+myProfile.current.question);
+                        cb("E" +myProfile.current.excercise +"T"+myProfile.current.question);
 
                     }
                 })
@@ -71,17 +71,17 @@ angular.module('starter.services', [])
 
                     Database.user_ref.child(me.uid).update({
                       current: {
-                        "exercise" : 1,
+                        "excercise" : 1,
                         "question" : 1
                       },
 
                       saved: {
-                        "exercise1" : {
+                        "excercise1" : {
                           "question1" : "",
                           "question2" : "",
                           "question3" : ""
                         },
-                        "exercise2" : {
+                        "excercise2" : {
                           "question1" : "",
                           "question2" : "",
                           "question3" : ""
