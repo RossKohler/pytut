@@ -1,1 +1,14 @@
-<nav class="navbar navbar-inverse" style=border-radius:0px> <div class=container-fluid> <ul class="nav navbar-nav"> <li ng-class="{active: $state.includes('task1')}"><a ui-sref=task1>Question 1<span class=sr-only>(current)</span></a></li> <li ng-class="{active: $state.includes('task2')}"><a ui-sref=task2>Question 2</a></li> <li ng-class="{active: $state.includes('task3')}"><a ui-sref=task3>Question 3</a></li> </ul> </div> </nav> <div style=position:relative ui-view></div> 
+<nav class="navbar navbar-inverse" style=border-radius:0px>
+  <div tasks ng-controller = "TasksCtrl">
+    <div class=container-fluid>
+        <ul class="nav navbar-nav">
+
+            <li ng-class="{active: $state.includes('exercise1task1')}"><a ui-sref=exercise1task1>Question 1<span class=sr-only>(current)</span></a></li>
+            <li ng-class="{active: $state.includes('exercise1task2')}"><a ui-sref=exercise1task2>Question 2</a></li>
+            <li ng-class="{active: $state.includes('exercise1task3')}"><a ui-sref=exercise1task3>Question 3</a></li>
+            <li ng-class="{active: $state.includes('exercise1task3')}"><a ui-sref=exercise1task3>Question 4</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+<div style=position:relative ui-view></div>

@@ -32,9 +32,9 @@ angular.module('yapp')
         else {
           console.log("DIRECTING TO DASHBOARD");
           $analytics.setUsername(User.me().uid);
-          User.initMyProfile(function(){
+          User.initMyProfile(function(currEx){
                     $scope.$apply(function () {
-                      $location.path('/dashboard/tasks/task1');
+                      $location.path('/dashboard/tasks/'+User.currentEx());
           })
         });
 

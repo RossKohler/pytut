@@ -3,7 +3,7 @@
 angular.module('yapp')
     .controller('pythonInterpreterCtrl', function ($analytics, Database, $window, $location, User, $scope, $state, $sce) {
         $scope.showScore = false;
-        $scope.$state = $state;
+
         var Sk = $window.Sk;
 
         var aceHl;
@@ -13,9 +13,10 @@ angular.module('yapp')
         $scope.aceLoaded = function (_editor) {
             // Options
             _editor.setReadOnly(false);
-            _editor.setValue("", 1);// change to different value acc exercise
+            
+            _editor.setValue(User.savedEx($scope.exercise, $scope.question), 1);// set editor value to user's saved solution
             aceHl = _editor;
-            //$scope.detailFrame = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=x+%3D+5&cumulative=false&py=3&curInstr=0");
+
         };
 
         $scope.aceChanged = function (e) {
@@ -25,7 +26,7 @@ angular.module('yapp')
         };
 
         function outf(text) {
-            console.log("output run", text);
+
             var mypre = document.getElementById("output");
             mypre.innerHTML = mypre.innerHTML + text;
         }
@@ -80,6 +81,8 @@ angular.module('yapp')
             var prog = aceHl.getValue();
             var mypre = document.getElementById("output");
 
+            User.updateSaved(prog, $scope.exercise, $scope.question);
+
             mypre.innerHTML = '';
             Sk.pre = "output";
             Sk.configure({
@@ -93,13 +96,13 @@ angular.module('yapp')
                 return Sk.importMainWithBody("<stdin>", false, prog, true);
             });
             myPromise.then(function (mod) {
-                console.log('success');
+
             },
                 function (err) {
                     var mypre = document.getElementById("output");
                     mypre.innerHTML = mypre.innerHTML + err.toString();
                 });
-            console.log('+1 to number of runs for analytics');
+
         };
 
         $scope.automaticMark = function (question) {
@@ -260,4 +263,3 @@ function getDifference(a, b) {
     }
     return result;
 }
-
