@@ -66,7 +66,7 @@ angular.module('starter.services', [])
                         //LocalStorageService.setCacheValue("me",me);
                         // deff.resolve(authData);
                         return Promise.resolve(authData);
-                    }).then(function (error) {
+                    }).catch(function (error) {
                         console.log("AUTH FAIL")
                         //this is where we will get incorrect login
                         console.error(error);
