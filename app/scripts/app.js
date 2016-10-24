@@ -50,40 +50,40 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/contactus.html'
           })
-               .state('excercise1task1', {
-            url: '/excercise1task1',
+               .state('exercise1task1', {
+            url: '/exercise1task1',
             parent: 'tasks',
-            templateUrl: 'views/tasks/excercise1task1.html',
+            templateUrl: 'views/tasks/exercise1task1.html',
             controller: 'TasksCtrl'
           })
-               .state('excercise1task2', {
-            url: '/excercise1task2',
+               .state('exercise1task2', {
+            url: '/exercise1task2',
             parent: 'tasks',
-            templateUrl: 'views/tasks/excercise1task2.html',
+            templateUrl: 'views/tasks/exercise1task2.html',
             controller: 'TasksCtrl'
           })
-               .state('excercise1task3', {
-            url: '/excercise1task3',
+               .state('exercise1task3', {
+            url: '/exercise1task3',
             parent: 'tasks',
-            templateUrl: 'views/tasks/excercise1task3.html',
+            templateUrl: 'views/tasks/exercise1task3.html',
             controller: 'TasksCtrl'
           })
-          .state('excercise2task1', {
-       url: '/excercise2task1',
+          .state('exercise2task1', {
+       url: '/exercise2task1',
        parent: 'tasks',
-       templateUrl: 'views/tasks/excercise2task1.html',
+       templateUrl: 'views/tasks/exercise2task1.html',
        controller: 'TasksCtrl'
      })
-          .state('excercise2task2', {
-       url: '/excercise2task2',
+          .state('exercise2task2', {
+       url: '/exercise2task2',
        parent: 'tasks',
-       templateUrl: 'views/tasks/excercise2task2.html',
+       templateUrl: 'views/tasks/exercise2task2.html',
        controller: 'TasksCtrl'
      })
-          .state('excercise2task3', {
-       url: '/excercise2task3',
+          .state('exercise2task3', {
+       url: '/exercise2task3',
        parent: 'tasks',
-       templateUrl: 'views/tasks/excercise2task3.html',
+       templateUrl: 'views/tasks/exercise2task3.html',
        controller: 'TasksCtrl'
      })
   }).

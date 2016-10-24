@@ -14,7 +14,7 @@ angular.module('yapp')
             // Options
             _editor.setReadOnly(false);
             
-            _editor.setValue(User.savedEx($scope.excercise, $scope.question), 1);// set editor value to user's saved solution
+            _editor.setValue(User.savedEx($scope.exercise, $scope.question), 1);// set editor value to user's saved solution
             aceHl = _editor;
 
         };
@@ -81,7 +81,7 @@ angular.module('yapp')
             var prog = aceHl.getValue();
             var mypre = document.getElementById("output");
 
-            User.updateSaved(prog, $scope.excercise, $scope.question);
+            User.updateSaved(prog, $scope.exercise, $scope.question);
 
             mypre.innerHTML = '';
             Sk.pre = "output";
@@ -105,7 +105,7 @@ angular.module('yapp')
 
         };
 
-        $scope.automaticMark = function (question,excercise) {
+        $scope.automaticMark = function (question,exercise) {
             var finalResult = ""
             var mypre = document.getElementById("output");
             var prog = aceHl.getValue();
@@ -113,11 +113,11 @@ angular.module('yapp')
 
             console.log("Submit for automatic marking");
             var prog = aceHl.getValue();
-            Database.assessment_ref.child(excercise).child(question).once("value", function (snapshot) {
+            Database.assessment_ref.child(exercise).child(question).once("value", function (snapshot) {
                 var tests = snapshot.val();
                 var totalMark = snapshot.val().length - 1
                 var mark = 0;
-                mypre.innerHTML = "**MARKING QUESTION" + question + "**\n\n"
+                mypre.innerHTML = "**MARKING QUESTION " + question + "**\n\n"
                 var keys = Object.keys(tests);
                 asyncLoop(keys.length, function (loop) {
                     var finalResult = "";
