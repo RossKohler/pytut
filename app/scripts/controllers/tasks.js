@@ -32,47 +32,33 @@ angular.module('yapp')
           $scope.exercise = "2";
         }
 
-        var sel =
+        if($scope.exercise =="1")
         {
-          "1" :{
-            "1" : "exercise1task1",
-            "2" : "exercise1task2",
-            "3" : "exercise1task3"
-          },
-          "2": {
-            "1" : "exercise2task1",
-            "2" : "exercise2task2",
-            "3" : "exercise2task3"
-          }
-        };
+          $scope.tabs = {
 
-        $scope.tabs = sel[$scope.exercise];
-        $scope.customHtml = $sce.trustAsHtml('<ul class="nav navbar-nav"><li ng-class="{active: $state.includes($scope.tabs[1])}" ng-click ="clicked(1)"><a ui-sref="$scope.tabs[1]">Question 1</a></li><li ng-class="{active: $state.includes($scope.tabs[2])}" ng-click ="clicked(2)"><a ui-sref="$scope.tabs[2]">Question 2</a></li><li ng-class="{active: $state.includes($scope.tabs[3])}" ng-click ="clicked(3)"><a ui-sref="$scope.tabs[3]">Question 3</a></li></ul>');
-        console.log($scope.tabs[1]);
+              "1" : "exercise1task1",
+              "2" : "exercise1task2",
+              "3" : "exercise1task3"
+
+          }
+        }
+        else {
+          $scope.tabs = {
+
+              "1" : "exercise2task1",
+              "2" : "exercise2task2",
+              "3" : "exercise2task3"
+
+          }
+        }
+
+        
 
         $scope.clicked = function (q){
-          User.updateCurrent($scope.exercise,q);
+          User.updateCurrent($scope.exercise,q);$location.path('/dashboard/tasks/'+User.currentEx());
+          $location.path('/dashboard/tasks/'+User.currentEx());
         };
 
-        $scope.change = function(ex, qu)
-        {
-
-          $scope.exercise = ex;
-          $scope.question =qu;
-
-          $scope.tabs = sel[$scope.exercise];
-          console.log($scope.tabs);
-
-          $scope.customHtml = $sce.trustAsHtml('<ul><li>render me please</li></ul>');
-          //console.log($scope.tabs);
-
-          User.updateCurrent($scope.exercise,$scope.question);
-
-          $location.path('/dashboard/tasks/'+User.currentEx());
-          //$scope.$apply(function(){
-          //  $location.path('/dashboard/tasks/'+User.currentEx());
-          //})
-        };//end change
 
 
 })
