@@ -117,7 +117,7 @@ angular.module('yapp')
                 var tests = snapshot.val();
                 var totalMark = snapshot.val().length - 1
                 var mark = 0;
-                mypre.innerHTML = "**MARKING " + question.toUpperCase() + "**\n\n"
+                mypre.innerHTML = "**MARKING QUESTION" + question + "**\n\n"
                 var keys = Object.keys(tests);
                 asyncLoop(keys.length, function (loop) {
                     var finalResult = "";
@@ -159,11 +159,11 @@ angular.module('yapp')
                                 for (var i = 0; i < splitResult.length; i++) {
                                     if (i < splitOutput.length) {
                                         if (splitOutput[i] !== splitResult[i]) {
-                                            mypre.innerHTML = mypre.innerHTML + (i + 1) + ":" + splitOutput[i] + "  !=   " + splitResult[i] + "\n"
+                                            mypre.innerHTML = mypre.innerHTML + "line "+ (i + 1) + ":" + splitOutput[i] + "  !=   " + splitResult[i] + "\n"
                                         }
                                     }
                                     else {
-                                        mypre.innerHTML = mypre.innerHTML + (i + 1) + ":" + splitResult[i] + "\n"
+                                        mypre.innerHTML = mypre.innerHTML + "line "+(i + 1) + ": " + splitResult[i] + "\n"
                                     }
                                 }
                             }
@@ -171,11 +171,11 @@ angular.module('yapp')
                                 for (var i = 0; i < splitOutput.length; i++) {
                                     if (i < splitResult.length) {
                                         if (splitOutput[i] !== splitResult[i]) {
-                                            mypre.innerHTML = mypre.innerHTML + (i + 1) + ":" + splitOutput[i] + "  !=   " + splitResult[i] + "\n"
+                                            mypre.innerHTML = mypre.innerHTML + "line "+ (i + 1) + ": " + splitOutput[i] + "  !=   " + splitResult[i] + "\n"
                                         }
                                     }
                                     else {
-                                        mypre.innerHTML = mypre.innerHTML + (i + 1) + ":" + splitOutput[i] + "\n"
+                                        mypre.innerHTML = mypre.innerHTML + "line "+ (i + 1) + ": " + splitOutput[i] + "\n"
                                     }
                                 }
 

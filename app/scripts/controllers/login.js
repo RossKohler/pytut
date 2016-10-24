@@ -20,7 +20,7 @@ angular.module('yapp')
         if (data.code) {
           console.log("Hello")
           $scope.$apply(function () {
-            $scope.data = { code: data.code, message: data.message }
+             alert(data.message);
              $scope.isLoading = false;
           })
           //$scope.data.code = data.code;

@@ -14,11 +14,12 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
 					<div class="form-group">
 						<input  name="password" type="password" class="form-control input-underline input-lg" ng-model="password" id="" placeholder="Password" required>
 					</div>
+					  <div class="checkbox">
+    					<label><input ng-model="agreement" type="checkbox"> I give my consent to participate in the Pytut Online Tutor study. Anonymous analytics and data gathered from my participation can be used in their research. </label>
+  					  </div>
 				</div>
 
-				<button ng-hide="isLoading" type="submit" class="btn btn-white btn-outline btn-lg btn-rounded" ng-disabled="loginForm.email.$invalid || loginForm.password.$invalid ">Login</button>
-
-
+				<button ng-hide="isLoading" type="submit" class="btn btn-white btn-outline btn-lg btn-rounded" ng-disabled="loginForm.email.$invalid || loginForm.password.$invalid || !agreement ">Login</button>
 				<i ng-show="isLoading" class="fa fa-cog fa-spin" style="font-size:70px; color:white"></i>
 			</form>
 
