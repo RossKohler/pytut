@@ -3,7 +3,7 @@
 ## [Demo](http://rawgit.com/start-angular/ani-theme/master/dist/index.html)
 
 Ani Theme is a Boilerplate for Animated AngularJS Starter Theme written with Bootstrap LESS. Powered by Gulp.
-![Preview](/examples/preview.png)
+![Preview](/examples/login.png)
 
 Find out more [Free Angular Themes at StartAngular.com](http://www.startangular.com/).
 
