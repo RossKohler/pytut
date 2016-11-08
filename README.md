@@ -6,15 +6,15 @@ This is the readme for the PyTut E-learning platform prototype developed by Ross
 ## Installation
 Installation of this website is not necessary as it is hosted at [this address](https://pytut-eedf2.firebaseapp.com).
 
-Complete the followng set of instructions to run this website on your local machine: 
-1. Clone this project or Download that ZIP file
-2. Make sure you have [bower](http://bower.io/), [gulp](https://www.npmjs.com/package/gulp) and  [npm](https://www.npmjs.org/) installed globally
-3. On the command prompt run the following commands
+Complete the followng set of instructions to run this website on your local machine: <br>
+1. Clone this project or Download that ZIP file <br>
+2. Make sure you have [bower](http://bower.io/), [gulp](https://www.npmjs.com/package/gulp) and  [npm](https://www.npmjs.org/) installed globally<br>
+3. On the command prompt run the following commands<br>
 - cd `project-directory`
 - `bower install`
 - `npm install`
-- `gulp serve` - For development mode
-4. Navigate to http://localhost:9000/ in your browser
+- `gulp serve`
+4. Navigate to http://localhost:9000/ in your browser to view the website <br>
 
 
 
