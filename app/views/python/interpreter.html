@@ -1,11 +1,10 @@
-<div>
+<!--CKC general layout-->
+<div class="row">
+
     <div class="col-sm-6">
+    <h3 class="util">Code Window</h3>
 
-                    <input name="input" type="text" class="form-control" id="" ng-model="$parent.input" placeholder="Type code input here.."
-                        required>
-
-        <h3 class="util">Code Window</h3>
-        <div ui-ace="{
+    <div ui-ace="{
           useWrapMode : true,
           showGutter: true,
           theme:'textmate',
@@ -13,29 +12,46 @@
           firstLineNumber: 1,
           onLoad: aceLoaded,
           onChange: aceChanged
-        }" />
+        }"/>
 
     </div>
 
-    <button type="button" ng-click="runit()" analytics-on="click" analytics-event="Run Code" analytics-category="Questions" analytics-label="$parent.question">Run Code</button>
-    <!--run interactive code-->
-    <button type="button" ng-click="debugit()" analytics-on="click" analytics-event="Debug Code" analytics-category="Questions"
-        analytics-label="$parent.question">Debug Code</button>
-    <!--debug program-->
-    <button type="button" ng-click="automaticMark($parent.question,$parent.exercise)" analytics-on="click" analytics-event="Submit for Grading"
-        analytics-category="Questions" analytics-label="$parent.question">Submit for Grading</button>
-    <!--submit for automatic marking-->
-</div>
-<div class="col-sm-6" style="margin-top: 33px;">
-    <h3>Code Output</h3>
-    <pre id="output"></pre>
-    <h4 ng-show="showScore" style="color:forestgreen">You've received a score of {{mark}} out of {{totalMarks}}</h4>
-</div>
+    </div>
+    <div class="col-sm-6">
+        <h3>Code Output</h3>
+        <pre id="output"></pre>
+        <h4 ng-show="showScore" style="color:forestgreen">You've received a score of {{mark}} out of {{totalMarks}}</h4>
+    </div>
 
 </div>
-<br>
-<h3 id="debHd" visibility="hidden">Debugger</h3>
-<div class="row col-sm-12" id="frameHere"></div>
+
+<div class="col-sm-6">
+  <div class="row">
+    <input name="input" type="text" class="form-control" style="width:100%" id="" ng-model="$parent.input" placeholder="Type code input here.." required></div>
+    <br>
+<div class="row">
+  <div class="col-sm-4">
+  <!--RK analytics-->
+  <button type="button" class="btn btn-primary" ng-click="runit()" analytics-on="click" analytics-event="Run Code" analytics-category="Questions" analytics-label="$parent.question" >Run Code</button>
+  </div>
+  <div class="col-sm-4">
+  <button type="button" class="btn btn-primary" ng-click="debugit()" analytics-on="click" analytics-event="Debug Code" analytics-category="Questions" analytics-label="$parent.question" >Debug Code</button>
+  </div>
+  <div class="col-sm-4">
+  <button type="button" class="btn btn-primary" ng-click="automaticMark($parent.question,$parent.exercise)" analytics-on="click" analytics-event="Submit for Grading" analytics-category="Questions" analytics-label="$parent.question" >Submit for Grading</button>
+  </div>
+</div></div>
+
+<div class ="row">
+  <div class="col-sm-12">
+    <h3 id="debHd" visibility="hidden">Debugger</h3>
+  </div>
+</div>
+<div class="col-sm-12">
+  <div class="row" id="frameHere">
+  </div>
+</div>
+
 </div>
 </div>
 
@@ -43,16 +59,25 @@
     body {
         overflow: scroll;
     }
-    
+
     #output {
         border-style: groove;
         border-color: #000000;
         height: 300px;
     }
-    
+
     .ace_editor {
         height: 300px;
         border-style: solid;
         border-color: #000000;
+
+    }
+
+    .interpreterButton{
+      background-color: #3CA2E0;
+    }
+
+    .btn-primary{
+      width: 100%;
     }
 </style>
