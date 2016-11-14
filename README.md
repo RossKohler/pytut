@@ -1,26 +1,20 @@
-## Ani Theme - Free AngularJS Dashboard Starter Theme
+## PyTut Online Python Tutor
 
-## [Demo](http://rawgit.com/start-angular/ani-theme/master/dist/index.html)
-
-Ani Theme is a Boilerplate for Animated AngularJS Starter Theme written with Bootstrap LESS. Powered by Gulp.
-![Preview](/examples/preview.png)
-
-Find out more [Free Angular Themes at StartAngular.com](http://www.startangular.com/).
+This is the readme for the PyTut E-learning platform prototype developed by Ross Kohler and Carla Kirk-Cohen as part of UCT's Computer Science honours course.
+![Preview](/examples/login.PNG)
 
 ## Installation
-1. Clone this project or Download that ZIP file
-2. Make sure you have [bower](http://bower.io/), [gulp](https://www.npmjs.com/package/gulp) and  [npm](https://www.npmjs.org/) installed globally
-3. On the command prompt run the following commands
+Installation of this website is not necessary as it is hosted at [this address](https://pytut-eedf2.firebaseapp.com).
+
+To run this website in your local machine, complete the following set of instructions:<br>
+1. Clone this project or Download that ZIP file <br>
+2. Make sure you have [bower](http://bower.io/), [gulp](https://www.npmjs.com/package/gulp) and  [npm](https://www.npmjs.org/) installed globally<br>
+3. On the command prompt run the following commands<br>
 - cd `project-directory`
 - `bower install`
 - `npm install`
-- `gulp serve` - For development mode
-- `gulp build` - concat, minify and generate the files for deployment
+- `gulp serve`
+4. Navigate to http://localhost:9000/ in your browser to view the website <br>
 
 
-### Goodness of Bootstrap Less
-In the source, we have the less files of Bootstrap attached and the variables have been updated to create this theme. You can change the variable in the less file. Animation and Transitions are in separate less file.   
 
-### Automation tools
-
-- [Gulp](http://gulpjs.com/)
