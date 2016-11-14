@@ -1,5 +1,5 @@
 angular.module('starter.services', [])
-
+//RK login facility
     .factory('Database', function () {
 
         var config = {
@@ -26,7 +26,7 @@ angular.module('starter.services', [])
             me: function () {
                 return me;
             },
-
+            //CKC save and reload
             savedEx: function (ex, q) {
               return myProfile.saved["exercise"+ex]["question"+q];
             },
@@ -39,7 +39,6 @@ angular.module('starter.services', [])
               var updates ={};
               updates["/saved/exercise"+ex+"/question"+ q+"/"] = code;
               Database.user_ref.child(me.uid).update(updates);
-
             },
 
             updateCurrent: function (ex,q){
@@ -50,6 +49,7 @@ angular.module('starter.services', [])
               Database.user_ref.child(me.uid).update(updates);
             },
 
+            // RK login facility
             initMyProfile: function(cb){
 
                 Database.user_ref.child(me.uid).on("value",function(snapshot){
@@ -65,7 +65,7 @@ angular.module('starter.services', [])
                 Database.user_ref.child(me.uid).once('value').then(function(snapshot) {
                   var saved = snapshot.val().saved;
                   // set up database to track work and progress
-                  
+                  // CKC save and reload
                   if(saved == undefined)
                   {
 
@@ -122,10 +122,7 @@ angular.module('starter.services', [])
                         Database.user_ref.child(me.uid).update({
                             last_seen: firebase.database.ServerValue.TIMESTAMP
                         })
-                        console.log("AUTH SUCCESS")
-                        ////console.log("setting me in cache: ",me);
-                        //LocalStorageService.setCacheValue("me",me);
-                        // deff.resolve(authData);
+
                         return Promise.resolve(authData);
                     }).catch(function (error) {
                         console.log("AUTH FAIL")
@@ -141,6 +138,7 @@ angular.module('starter.services', [])
 
     })
 
+    // RK automated
     .factory('AutomatedAssessment',function(Database){
         return{
             getTests: function(questionNumber){

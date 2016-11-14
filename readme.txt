@@ -25,8 +25,7 @@ Breakdown of Work
 =================
 This project was developed using the Angular Ani Dashboard theme. Some of the files that come with this theme have remained unchanged,
 others have been edited and others have been added to customize the template. This section provides a guideline that indicates what work
-was done by each team member and where the majority of this work was coded. This is in no way a comprehensive list of the files edited/added
-by each user, but rather a guideline to finding the bulk of the work completed. 
+was done by each team member and where the majority of this work was coded. This is in no way a comprehensive list of the files edited/added by each user, but rather a guideline to finding the bulk of the work completed. Comments to indicate which sections were completed by which team member (RK or CKC) are provided.
 
 Ross Kohler: automated marker, interactive chat, google analytics and login facility
 - app/scripts/controllers/interpreter.js

@@ -1,6 +1,6 @@
 angular.module('yapp')
   .controller('TasksCtrl', function($location,$scope, $state, User) {
-
+        // RK login
         if($state.includes('exercise1task1')){
           $scope.question = "1";
           $scope.functionName = "wordRectangle"
@@ -32,6 +32,7 @@ angular.module('yapp')
           $scope.exercise = "2";
         }
 
+        // CKC save and reload  
         if($scope.exercise =="1")
         {
           $scope.tabs = {

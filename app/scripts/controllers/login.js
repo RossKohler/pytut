@@ -12,7 +12,7 @@ angular.module('yapp')
     $scope.data = { code: "", message: "" };
     $scope.isLoading = false;
 
-
+    // Rk login facility
     $scope.submit = function (email, password) {
       $scope.isLoading = true;
       User.login(email, password).then(function (data) {
@@ -29,6 +29,7 @@ angular.module('yapp')
           console.log(data.code);
           console.log(data.message);
         }
+        // CKC reload exercise previously working on (or default if new user)
         else {
           console.log("DIRECTING TO DASHBOARD");
           $analytics.setUsername(User.me().uid);

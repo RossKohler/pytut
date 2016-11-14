@@ -9,11 +9,11 @@ angular.module('yapp')
         var aceHl;
 
         $scope.frameURL = $sce.trustAsResourceUrl("http://pythontutor.com/iframe-embed.html#code=%23%20this%20is%20the%20debugger&cumulative=false&py=3&curInstr=0");
-
+        //CKC - interactive code
         $scope.aceLoaded = function (_editor) {
             // Options
             _editor.setReadOnly(false);
-            
+            // CKC save and reload work
             _editor.setValue(User.savedEx($scope.exercise, $scope.question), 1);// set editor value to user's saved solution
             aceHl = _editor;
 
@@ -21,8 +21,6 @@ angular.module('yapp')
 
         $scope.aceChanged = function (e) {
             clearAll();
-            //var placeHere = document.getElementById("frameHere");
-            //placeHere.innerHTML="";
         };
 
         function outf(text) {
@@ -37,6 +35,38 @@ angular.module('yapp')
             return Sk.builtinFiles["files"][x];
         }
 
+         $scope.runit = function () {
+            clearAll();
+            var prog = aceHl.getValue();
+            var mypre = document.getElementById("output");
+
+            // save user work
+            User.updateSaved(prog, $scope.exercise, $scope.question);
+
+            mypre.innerHTML = '';
+            Sk.pre = "output";
+            Sk.configure({
+                output: outf, read: builtinRead, inputfun: function (str) {
+                    console.log($scope.input)
+                    return $scope.input;
+                },
+                inputfunTakesPrompt: true
+            });
+            (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+            var myPromise = Sk.misceval.asyncToPromise(function () {
+                return Sk.importMainWithBody("<stdin>", false, prog, true);
+            });
+            myPromise.then(function (mod) {
+
+            },
+                function (err) {
+                    var mypre = document.getElementById("output");
+                    mypre.innerHTML = mypre.innerHTML + err.toString();
+                });
+
+        };
+
+        // CKC visual debugger
         $scope.debugit = function () {
             // must run program to check that there are no syntax errors before debugging
             clearAll();
@@ -66,7 +96,7 @@ angular.module('yapp')
                 iframe.id = "debugger";
                 iframe.width = "90%";
                 iframe.height = "600px";
-                var url = "https://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue()) + "&codeDivHeight=400&codeDivWidth=550&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%5D&textReferences=false";
+                var url = "https://pythontutor.com/iframe-embed.html#code=" + encodeURIComponent(aceHl.getValue()) + "&codeDivHeight=400&codeDivWidth=550&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false";
                 iframe.src = url;
                 placeHere.appendChild(iframe);
             },
@@ -77,36 +107,7 @@ angular.module('yapp')
             console.log("debugging");
         };
 
-        $scope.runit = function () {
-            clearAll();
-            var prog = aceHl.getValue();
-            var mypre = document.getElementById("output");
-
-            User.updateSaved(prog, $scope.exercise, $scope.question);
-
-            mypre.innerHTML = '';
-            Sk.pre = "output";
-            Sk.configure({
-                output: outf, read: builtinRead, inputfun: function (str) {
-                    console.log($scope.input)
-                    return $scope.input;
-                },
-                inputfunTakesPrompt: true
-            });
-            (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-            var myPromise = Sk.misceval.asyncToPromise(function () {
-                return Sk.importMainWithBody("<stdin>", false, prog, true);
-            });
-            myPromise.then(function (mod) {
-
-            },
-                function (err) {
-                    var mypre = document.getElementById("output");
-                    mypre.innerHTML = mypre.innerHTML + err.toString();
-                });
-
-        };
-
+       // RK automated marker
         $scope.automaticMark = function (question,exercise) {
             var finalResult = ""
             var mypre = document.getElementById("output");
