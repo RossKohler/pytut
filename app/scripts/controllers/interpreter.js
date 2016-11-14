@@ -212,6 +212,7 @@ angular.module('yapp')
 
             // analytics: record user ID, timestamp, marking was inititated, success/failure?
         };
+
         function clearAll() {
             var placeHere = document.getElementById("frameHere");
             placeHere.innerHTML = ""; // clear previous debugging console
@@ -251,6 +252,7 @@ angular.module('yapp')
             loop.next();
             return loop;
         }
+        
     });
 function getDifference(a, b) {
     var i = 0;
