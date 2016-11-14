@@ -3,7 +3,7 @@
 angular.module('yapp')
     .controller('pythonInterpreterCtrl', function ($analytics, Database, $window, $location, User, $scope, $state, $sce) {
         $scope.showScore = false;
-
+        $scope.input = ""
         var Sk = $window.Sk;
 
         var aceHl;
@@ -47,7 +47,8 @@ angular.module('yapp')
             Sk.pre = "output";
             Sk.configure({
                 output: outf, read: builtinRead, inputfun: function (str) {
-                    return window.prompt(str);
+                    console.log($scope.input);
+                    return $scope.input;
                 },
                 inputfunTakesPrompt: true
             });
@@ -87,7 +88,8 @@ angular.module('yapp')
             Sk.pre = "output";
             Sk.configure({
                 output: outf, read: builtinRead, inputfun: function (str) {
-                    return window.prompt(str);
+                    console.log($scope.input)
+                    return $scope.input;
                 },
                 inputfunTakesPrompt: true
             });
